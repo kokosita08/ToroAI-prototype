@@ -520,8 +520,8 @@ export default function Home() {
             <Image
               src="/toroai-logo.png"
               alt="ToroAI logo"
-              width={230}
-              height={100}
+              width={500}
+              height={220}
               className="sidebarLogo"
             />
 
@@ -628,8 +628,8 @@ export default function Home() {
           <Image
             src="/toroai-logo.png"
             alt="ToroAI logo"
-            width={300}
-            height={130}
+            width={500}
+            height={220}
             className="mainLogo"
           />
 
@@ -644,6 +644,9 @@ export default function Home() {
 
             , and related immigration & academic queries.
 
+          <div className="disclaimer">
+            Independent student project. Not affiliated with or endorsed by CSUDH.
+          </div>
           </div>
 
         </div>
@@ -656,7 +659,7 @@ export default function Home() {
           <div className="suggestedSection">
 
             <h3>
-              💡 Suggested Questions
+              Suggested Questions
             </h3>
 
 
@@ -765,7 +768,13 @@ export default function Home() {
                               rel="noopener noreferrer"
                               className="sourceLink"
                             >
-                              {source}
+                              {source.includes("uscis.gov")
+                    ? "USCIS Source"
+                    : source.includes("csudh.edu")
+                    ? "CSUDH Source"
+                    : source.includes("dhs.gov")
+                    ? "DHS Source"
+                    : "Official Source"}
                             </a>
 
                           )

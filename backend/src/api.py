@@ -2,6 +2,7 @@
 # Workflow of the file : frontend sends question -> API receives question -> TOROAI creates answer -> API sends answer back
 
 from flask import Flask 
+import os
 from flask import request 
 from flask import jsonify 
 from flask_cors import CORS 
@@ -12,7 +13,7 @@ from backend.src.generation import generate_answer
 app = Flask(__name__)
 
 # allow the frontend to send request to this API 
-CORS(app)
+CORS(app, origins=[os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")])
 
 # HOME ROUTE - this route is only used to check if the backend is running
 @app.route("/", methods = ["GET"])
@@ -46,6 +47,6 @@ def chat():
 # start API server 
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = 8080, debug = True)
+    app.run(host = "0.0.0.0", port = 8080, debug = False)
 
 

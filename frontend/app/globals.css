@@ -227,7 +227,7 @@ button {
 .chatArea {
   width: 100%;
   max-width: 980px;
-  margin: 30px auto 150px;
+  margin: 30px auto 230px;
 }
 
 .messageRow {
@@ -431,4 +431,24 @@ button {
   .sidebarClosed + .mainContent .footerMessage {
     left: 60px;
   }
+}
+.sidebarLogo {
+  width: 260px;
+  height: auto;
+  max-width: 100%;
+}
+
+.disclaimer {
+  font-size: 13px;
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+.suggestedSection h3 {
+  font-size: 18px;
+}
+
+.suggestedGrid button {
+  font-size: 15px;
+  padding: 12px 16px;
 }
