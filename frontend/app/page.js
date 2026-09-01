@@ -36,6 +36,9 @@ export default function Home() {
   // lets us detect clicks outside the three-dot menu
   const menuRef = useRef(null);
 
+// points to the bottom of the conversation for automatic scrolling
+const chatEndRef = useRef(null);
+
 
   // questions shown when the user has not started a conversation yet
   const suggestedQuestions = [
@@ -80,7 +83,19 @@ export default function Home() {
   }, [sidebarOpen]);
 
 
-  // sends the user's question to the Flask backend API
+  
+
+// automatically scroll to the newest message/loading indicator
+useEffect(() => {
+    if (messages.length > 0 || loading) {
+        chatEndRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+    }
+}, [messages, loading]);
+
+// sends the user's question to the Flask backend API
   async function sendQuestion(selectedQuestion) {
 
     // suggested question is used if the user clicked one
@@ -794,23 +809,36 @@ export default function Home() {
 
           {/* LOADING MESSAGE */}
           {loading && (
+            <div className="messageRow assistantRow">
+              <Image
+                src="/toro-mascot.png"
+                alt="ToroAI mascot"
+                width={52}
+                height={52}
+                className="assistantAvatar"
+              />
 
-            <div className="loading">
-              
-<div className="typing-indicator">
-  <div className="typing-label">
-    ToroAI is working on your question...
-  </div>
-  <div className="typing-dots">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
+              <div className="assistantMessage loadingMessage">
+                <div className="assistantName">
+                  ToroAI
+                </div>
 
+                <div className="messageText">
+                  <div className="typing-label">
+                    ToroAI is working on your question...
+                  </div>
+
+                  <div className="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
             </div>
-
           )}
+
+          <div ref={chatEndRef} />
 
         </div>
 
