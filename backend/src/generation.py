@@ -93,7 +93,7 @@ def generate_answer(question):
 
     # connect to the openai llm
 
-    llm = ChatOpenAI(model = Config.OPENAI_LLM_MODEL, api_key = Config.OPENAI_API_KEY, max_tokens=500)
+    llm = ChatOpenAI(model = Config.OPENAI_LLM_MODEL, api_key = Config.OPENAI_API_KEY, max_tokens=1200)
 
     #send the prompt to llm
 
@@ -101,4 +101,5 @@ def generate_answer(question):
 
     # return the final written answer and source links 
     return { "answer": response.content, "sources": sources}
+
 
