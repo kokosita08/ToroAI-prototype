@@ -8,6 +8,14 @@ Right now, ToroAI mainly focuses on topics like CPT, OPT, STEM OPT, enrollment r
 
 ---
 
+## Live Demo
+
+Try ToroAI here:
+
+https://toro-ai-prototype.vercel.app
+
+---
+
 ## Why I Built This
 
 International students often have to check information from different places depending on the question.
@@ -238,6 +246,28 @@ If there is not enough reliable information, ToroAI should say so.
 
 ---
 
+## What I learned ?
+
+While building ToroAI, most of my learning came from trying to understand why each part of the system was needed instead of only getting the code to work.
+
+Some of the main questions I worked through were:
+
+1. **How does an embedding actually represent text, and how does Pinecone use those vectors to find semantically similar information?**
+
+2. **How do `top_k`, chunk size, chunk overlap, and similarity thresholds affect what information gets retrieved and eventually sent to the LLM?**
+
+3. **If I increase `top_k`, does that automatically improve the answer, or can retrieving more chunks actually introduce unrelated context and reduce answer quality?**
+
+4. **How can I make ToroAI strictly answer from retrieved RAG sources instead of falling back to the LLM's general knowledge when the sources do not contain enough information?**
+
+5. **How do I test whether the chatbot is really grounded and not hallucinating, especially for ambiguous questions, individual immigration cases, prompt-injection attempts, and out-of-scope questions?**
+
+6. **Why does an application that works locally need separate frontend and backend deployment, environment variables, CORS configuration, and different production URLs before it works publicly?**
+
+7. **How could I eventually move from a pre-indexed RAG system to a conversational, Just-in-Time RAG system that remembers context and checks trusted sources for updated information before answering?**
+
+---
+
 ## Running the Project
 
 ### Backend
@@ -263,6 +293,12 @@ npm run dev
 
 The frontend runs on port `3000`.
 
+---
+
+## Deployment
+
+- Frontend: Next.js deployed on Vercel
+- Backend: Flask API deployed on Render
 ---
 
 ## Environment Variables
