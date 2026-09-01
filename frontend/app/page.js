@@ -796,7 +796,18 @@ export default function Home() {
           {loading && (
 
             <div className="loading">
-              ToroAI is thinking...
+              
+<div className="typing-indicator">
+  <div className="typing-label">
+    ToroAI is working on your question...
+  </div>
+  <div className="typing-dots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
             </div>
 
           )}
