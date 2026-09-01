@@ -100,6 +100,13 @@ def generate_answer(question):
     response = llm.invoke(prompt)
 
     # return the final written answer and source links 
-    return { "answer": response.content, "sources": sources}
+    answer = response.content
+    
+    if not answer or not answer.strip():
+        answer = (
+        "ToroAI found relevant sources, but could not generate a complete "
+        "answer for this question. Please try asking the question in smaller parts."
+        )
+    return {"answer": answer, "sources": sources}
 
 

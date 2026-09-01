@@ -80,7 +80,7 @@ Right now I am using:
 
 - Top 5 retrieved chunks
 - Similarity threshold of 0.50
-- Maximum answer length of 500 tokens
+- Maximum answer length of 1200 tokens
 
 I adjusted these values while testing the chatbot. The goal was to retrieve enough useful information without sending too many unrelated chunks to the model.
 
